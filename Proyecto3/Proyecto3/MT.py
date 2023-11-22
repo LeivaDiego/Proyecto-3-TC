@@ -10,3 +10,25 @@ class TuringMachine:
         self.initial_state = initial_state
         self.final_state = final_state
         self.simulation_strings = simulation_strings if simulation_strings is not None else []
+
+    def load_from_yaml(self, yaml_file):
+        with open(yaml_file, 'r') as file:
+            data = yaml.safe_load(file)
+
+        # Asignar los valores a las propiedades de la clase
+        self.states = data.get('q_states', {}).get('q_list', [])
+        self.initial_state = data.get('q_states', {}).get('initial')
+        self.final_state = data.get('q_states', {}).get('final')
+        self.input_alphabet = data.get('alphabet', [])
+        self.tape_alphabet = data.get('tape_alphabet', [])
+        
+        # Procesar las transiciones
+        self.transitions = {}
+        for transition in data.get('delta', []):
+            key = (transition['params']['initial_state'], transition['params'].get('tape_input'))
+            value = (transition['output']['final_state'],
+                     transition['output'].get('tape_output'),
+                     transition['output']['tape_displacement'])
+            self.transitions[key] = value
+
+        self.simulation_strings = data.get('simulation_strings', [])

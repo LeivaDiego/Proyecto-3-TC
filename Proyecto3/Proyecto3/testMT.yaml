@@ -1,0 +1,51 @@
+# Lista de estados
+q_states:
+  q_list:
+  - '0'
+  - '1'
+  - '2'
+  - '3'
+  - '4'
+  - '5'
+  initial: '0'
+  final: '5'
+
+
+# Alfabetos de la MT
+alphabet:
+- a
+- b
+tape_alphabet:
+- '#'
+- X
+- a
+- b
+
+
+# Funcion de transicion
+delta:
+- params:
+    initial_state: '0'
+    mem_cache_value:
+    tape_input: a
+  output:
+    final_state: '1'
+    mem_cache_value:
+    tape_output:
+    tape_displacement: R
+
+- params:
+    initial_state: '0'
+    mem_cache_value:
+    tape_input: b
+  output:
+    final_state: '1'
+    mem_cache_value:
+    tape_output:
+    tape_displacement: R
+
+# Cadenas a ser simuladas por la MT luego de parsearla y generarla
+simulation_strings:
+- aab#aab
+- ab#ab
+- abbababa#aba
