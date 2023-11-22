@@ -32,3 +32,15 @@ class TuringMachine:
             self.transitions[key] = value
 
         self.simulation_strings = data.get('simulation_strings', [])
+        
+    def debug_print(self):
+            print("Turing Machine Configuration:")
+            print("States:", self.states)
+            print("Input Alphabet:", self.input_alphabet)
+            print("Tape Alphabet:", self.tape_alphabet)
+            print("Initial State:", self.initial_state)
+            print("Final State:", self.final_state)
+            print("Transitions:")
+            for key, value in self.transitions.items():
+                print(f"  {key} -> {value}")
+            print("Simulation Strings:", self.simulation_strings)
