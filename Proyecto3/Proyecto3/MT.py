@@ -54,10 +54,17 @@ class MaquinaTuring:
 		self.head_position = 0
 
 	def format_tape(self):
-		tape_str = ''.join([str(sym) if sym is not None else 'B' for sym in self.tape])
-		return (tape_str[:self.head_position] + ' [' + str(self.current_state) + ',' 
-				+ (tape_str[self.head_position] if self.tape[self.head_position] is not None else 'B') 
-				+ '] ' + tape_str[self.head_position + 1:])
+		start = 0
+		end = len(self.tape)
+		while start < end and self.tape[start] is None:
+			start += 1
+		while end > start and self.tape[end - 1] is None:
+			end -= 1
+
+		# Formatear la cinta para la visualizacion
+		tape_str = ''.join([str(sym) if sym is not None else 'B' for sym in self.tape[start:end]])
+		return tape_str[:self.head_position - start] + ' ' + str(self.current_state) + ' ' + \
+			   tape_str[self.head_position - start:]
 
 	def step(self):
 		if self.head_position < 0 or self.head_position >= len(self.tape):
