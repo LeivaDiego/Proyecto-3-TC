@@ -129,7 +129,7 @@ delta:
 
 # Cadenas a ser simuladas
 simulation_strings:
-  - 'ab'
-  - 'aabb'
   - 'aaabbb'
-  - 'aaabb' 
+  - 'aaaabbbb'
+  - 'abbbaa'
+  - 'baaaaa' 
