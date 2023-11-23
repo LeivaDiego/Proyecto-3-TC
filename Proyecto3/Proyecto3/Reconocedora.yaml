@@ -1,0 +1,131 @@
+# Referencia de MT
+# https://www.geeksforgeeks.org/turing-machine-for-l-an-bn-n1/
+
+q_states:
+  q_list:
+    - 'q0'
+    - 'q1'
+    - 'q2'
+    - 'q3'
+    - 'q4'
+  initial: 'q0'
+  final: 'q4'
+
+alphabet:
+  - 'a'
+  - 'b'
+
+tape_alphabet:
+  - 'X'
+  - 'Y'
+  - 'a'
+  - 'b'
+  - 
+
+delta:
+
+# De q0 a q1 ----------
+# δ(q0, a) = (q1, X, R)
+  - params:
+      initial_state: 'q0'
+      tape_input: 'a'
+    output:
+      final_state: 'q1'
+      tape_output: 'X'
+      tape_displacement: 'R'
+
+
+# De q1 a q1 ----------
+# δ(q1, a) = (q1, a, R)
+  - params:
+      initial_state: 'q1'
+      tape_input: 'a'
+    output:
+      final_state: 'q1'
+      tape_output: 'a'
+      tape_displacement: 'R'
+
+# δ(q1, b) = (q1, b, R)
+  - params:
+      initial_state: 'q1'
+      tape_input: 'b'
+    output:
+      final_state: 'q1'
+      tape_output: 'b'
+      tape_displacement: 'R'
+
+
+# De q1 a q2 ----------
+# δ(q1, B) = (q2, B, L)
+  - params:
+      initial_state: 'q1'
+      tape_input: 
+    output:
+      final_state: 'q2'
+      tape_output: 
+      tape_displacement: 'L'
+
+# δ(q1, Y) = (q2, Y, L)
+  - params:
+      initial_state: 'q1'
+      tape_input: 'Y'
+    output:
+      final_state: 'q2'
+      tape_output: 'Y'
+      tape_displacement: 'L'
+
+
+# De q2 a q3 ----------
+# δ(q2, b) = (q3, Y, L)
+  - params:
+      initial_state: 'q2'
+      tape_input: 'b' 
+    output:
+      final_state: 'q3'
+      tape_output: 'Y'
+      tape_displacement: 'L'
+
+# De q3 a q3 ----------
+# δ(q3, a) = (q3, a, L)
+  - params:
+      initial_state: 'q3'
+      tape_input: 'a'
+    output:
+      final_state: 'q3'
+      tape_output: 'a'
+      tape_displacement: 'L'
+
+# δ(q3, b) = (q0, b, R)
+  - params:
+      initial_state: 'q3'
+      tape_input: 'b'
+    output:
+      final_state: 'q3'
+      tape_output: 'b'
+      tape_displacement: 'L'
+
+# De q3 a q0 ----------
+# δ(q3, X) = (q0, X, R)
+  - params:
+      initial_state: 'q3'
+      tape_input: 'X'
+    output:
+      final_state: 'q0'
+      tape_output: 'X'
+      tape_displacement: 'R'
+
+# De q0 a q4 ----------
+# δ(q0, Y) = (q4, Y, S)
+  - params:
+      initial_state: 'q0'
+      tape_input: 'Y'
+    output:
+      final_state: 'q4'
+      tape_output: 'Y'
+      tape_displacement: 'S'
+
+simulation_strings:
+  - 'ab'
+  - 'aabb'
+  - 'aaabbb'
+  - 'aaabb' 
