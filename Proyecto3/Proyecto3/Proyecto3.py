@@ -1,6 +1,7 @@
 from MT import MaquinaTuring
 
 def main():
+	print("Maquina de Turing Reconocedora")
 	mtr = MaquinaTuring()
 	mtr.load_from_yaml("Reconocedora.yaml")
 	#mt.debug_print()
@@ -18,6 +19,7 @@ def main():
 			print("La cadena es rechazada por la MT")
 		print("---------------------------------\n\n")
 	
+	print("Maquina de Turing Alteradora")
 	mta = MaquinaTuring()
 	mta.load_from_yaml("Alteradora.yaml")
 	#mt.debug_print()

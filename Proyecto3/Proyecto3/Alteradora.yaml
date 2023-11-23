@@ -1,6 +1,7 @@
 # Referencia de MT
 # https://www.geeksforgeeks.org/design-turing-machine-to-reverse-string-consisting-of-as-and-bs/
 
+# Lista de estados
 q_states:
   q_list:
     - 'q0'
@@ -13,6 +14,7 @@ q_states:
   initial: 'q0'
   final: 'q6'
 
+# Alfabetos de la MT
 alphabet:
   - 'a'
   - 'b'
@@ -23,6 +25,7 @@ tape_alphabet:
   - 'b'
   - 
 
+# Funcion de transicion
 delta:
 
 # De q0 a q0 ----------
@@ -243,6 +246,7 @@ delta:
       tape_displacement: 'S'
 
 
+# Cadenas a ser simuladas
 simulation_strings:
   - 'ab'
   - 'aabb'

@@ -1,6 +1,7 @@
 # Referencia de MT
 # https://www.geeksforgeeks.org/turing-machine-for-l-an-bn-n1/
 
+# Lista de estados
 q_states:
   q_list:
     - 'q0'
@@ -11,6 +12,7 @@ q_states:
   initial: 'q0'
   final: 'q4'
 
+# Alfabetos de la MT
 alphabet:
   - 'a'
   - 'b'
@@ -22,6 +24,7 @@ tape_alphabet:
   - 'b'
   - 
 
+# Funcion de transicion
 delta:
 
 # De q0 a q1 ----------
@@ -124,6 +127,7 @@ delta:
       tape_output: 'Y'
       tape_displacement: 'S'
 
+# Cadenas a ser simuladas
 simulation_strings:
   - 'ab'
   - 'aabb'
