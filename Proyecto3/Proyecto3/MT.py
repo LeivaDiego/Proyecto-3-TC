@@ -17,7 +17,7 @@ class MaquinaTuring:
 	def load_from_yaml(self, yaml_file):
 		with open(yaml_file, 'r') as file:
 			data = yaml.safe_load(file)
-		
+
 		# Asignar los valores a las propiedades de la clase
 		self.states = data.get('q_states', {}).get('q_list', [])
 		self.initial_state = data.get('q_states', {}).get('initial')
@@ -53,6 +53,10 @@ class MaquinaTuring:
 		self.tape = list(input_string) + [None]  # Agregar blanks al final
 		self.head_position = 0
 
+	def format_tape(self):
+		tape_str = ''.join([str(sym) if sym is not None else 'B' for sym in self.tape])
+		return tape_str[:self.head_position] + ' [' + str(self.current_state) + ',' + (tape_str[self.head_position] if self.tape[self.head_position] is not None else 'B') + '] ' + tape_str[self.head_position + 1:]
+
 	def step(self):
 		if self.head_position < 0 or self.head_position >= len(self.tape):
 			self.tape.append(None)  # Extender la cinta con blanks si es nececario
@@ -66,6 +70,8 @@ class MaquinaTuring:
 		next_state, replace_symbol, move_direction = self.transitions[transition_key]
 		self.tape[self.head_position] = replace_symbol
 		self.current_state = next_state
+		
+		print(f"⊢ {self.format_tape()}")
 
 		if move_direction == 'L':
 			self.head_position -= 1
@@ -73,7 +79,6 @@ class MaquinaTuring:
 			self.head_position += 1
 
 		return True  # Transicion valida, continuar maquina
-
 
 	def run(self, input_string):
 		self.reset(input_string)
