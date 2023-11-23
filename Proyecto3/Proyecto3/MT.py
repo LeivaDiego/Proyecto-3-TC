@@ -55,7 +55,9 @@ class MaquinaTuring:
 
 	def format_tape(self):
 		tape_str = ''.join([str(sym) if sym is not None else 'B' for sym in self.tape])
-		return tape_str[:self.head_position] + ' [' + str(self.current_state) + ',' + (tape_str[self.head_position] if self.tape[self.head_position] is not None else 'B') + '] ' + tape_str[self.head_position + 1:]
+		return (tape_str[:self.head_position] + ' [' + str(self.current_state) + ',' 
+				+ (tape_str[self.head_position] if self.tape[self.head_position] is not None else 'B') 
+				+ '] ' + tape_str[self.head_position + 1:])
 
 	def step(self):
 		if self.head_position < 0 or self.head_position >= len(self.tape):

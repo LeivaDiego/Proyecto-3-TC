@@ -5,9 +5,18 @@ def main():
 	mt.load_from_yaml("testMT.yaml")
 	#mt.debug_print()
 	for input_string in mt.simulation_strings:
+		print("---------------------------------")
+		print(f"Input: {input_string}")
+		print("---------------------------------")
+		print("Descripciones Instantaneas: ")
 		tape_result, is_accepted = mt.run(input_string)
-		result_str = ''.join([str(sym) if sym is not None else '' for sym in tape_result])  # Formatear la cinta
-		print(f"Input: {input_string}, Result: {result_str}, Accepted: {is_accepted}\n")
+		print("---------------------------------")
+		print("Resultado:")
+		if is_accepted:
+			print("La cadena es aceptada por la MT")
+		else:
+			print("La cadena es rechazada por la MT")
+		print("---------------------------------\n\n")
 
 if __name__ == "__main__":
 	main()
